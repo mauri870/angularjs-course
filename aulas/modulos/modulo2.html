@@ -1,0 +1,24 @@
+<!doctype html>
+<html ng-app=>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="CtrlModulo">
+    Meu nome é {{nome}}
+</div>
+
+<script>
+
+    var CtrlModulo = function(s) {
+      s.nome = "Wesley";
+    };
+
+    CtrlModulo.$inject = ['$scope'];
+
+
+</script>
+
+</body>
+</html>

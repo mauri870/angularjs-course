@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="App">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="CtrlApp">
+
+    <!-- <button son-click="executa()">Click</button> -->
+    <son-clic click="executa()">Clic</son-clic>
+
+</div>
+
+
+<script>
+
+    angular.module('App',[])
+            .directive('sonClick', function() {
+
+                return {
+                    restrict: 'A',
+                    link: function(scope, element, attrs) {
+                        element.bind('click', function() {
+                            scope.$eval(attrs.sonClick);
+                        })
+                    }
+                };
+
+            })
+            .directive('sonClic', function() {
+
+                return {
+                    restrict: 'E',
+                    replace: true,
+                    transclude: true,
+                    template: '<button ng-transclude></button>',
+                    link: function(scope, element, attrs) {
+                        element.bind('click', function() {
+                            scope.$eval(attrs.click);
+                        })
+                    }
+                };
+
+            })
+            .controller('CtrlApp', function($scope) {
+                $scope.executa = function() {
+                    alert('Diretiva clicada');
+                }
+            });
+</script>
+
+</body>
+</html>
